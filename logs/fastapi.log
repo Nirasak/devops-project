@@ -1,0 +1,30 @@
+INFO:     10.42.0.14:53384 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:33322 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:33322 - "GET /apple-touch-icon.png HTTP/1.1" 405 Method Not Allowed
+INFO:     10.42.0.14:49492 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:60200 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:60200 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:60200 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:60200 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:60200 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:60200 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:51652 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:51652 - "GET /apple-touch-icon-precomposed.png HTTP/1.1" 405 Method Not Allowed
+INFO:     10.42.0.14:54072 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.14:41298 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:41298 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:41298 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:41298 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:41298 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:52314 - "GET /users HTTP/1.1" 200 OK
+INFO:     10.42.0.14:50532 - "GET /users/3 HTTP/1.1" 200 OK
+INFO:     10.42.0.14:33564 - "GET / HTTP/1.1" 200 OK
+INFO:     10.42.0.14:49566 - "GET / HTTP/1.1" 200 OK
+INFO:     10.42.0.14:45576 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:33922 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:33922 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:33922 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:33922 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.14:33922 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.14:59340 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.14:47254 - "GET /users/count HTTP/1.1" 200 OK
