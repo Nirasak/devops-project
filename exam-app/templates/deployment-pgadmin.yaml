@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.pgadmin.name.deploy }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.pgadmin.name.label }}
+spec:
+  replicas: {{ .Values.pgadmin.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.pgadmin.name.label }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.pgadmin.name.label }}
+    spec:
+      containers:
+        - name: {{ .Values.pgadmin.name.label }}
+          image: "{{ .Values.pgadmin.image.repository }}:{{ .Values.pgadmin.image.tag }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: {{ .Values.pgadmin.name.label }}
+              containerPort: {{ .Values.pgadmin.port }}
+              protocol: TCP
+          env:
+            - name: PGADMIN_DEFAULT_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.pgadmin.name.label }}
+                  key: PGADMIN_DEFAULT_EMAIL
+            - name: PGADMIN_DEFAULT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.pgadmin.name.label }}
+                  key: PGADMIN_DEFAULT_PASSWORD

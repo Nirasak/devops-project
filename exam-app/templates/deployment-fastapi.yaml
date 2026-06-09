@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.fastapi.name.deploy }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.fastapi.name.label }}
+spec:
+  replicas: {{ .Values.fastapi.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.fastapi.name.label }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.fastapi.name.label }}
+    spec:
+      containers:
+        - name: {{ .Values.fastapi.name.label }}
+          image: "{{ .Values.fastapi.image.repository }}:{{ .Values.fastapi.image.tag }}"
+          imagePullPolicy: Never
+          ports:
+            - name: {{ .Values.fastapi.name.label }}
+              containerPort: {{ .Values.fastapi.port }}
+              protocol: {{ .Values.fastapi.protocol }}

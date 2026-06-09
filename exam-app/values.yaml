@@ -1,0 +1,35 @@
+namespace: standard
+
+fastapi:
+  name:
+    deploy: exam-fastapi
+    label: exam-fastapi
+  image:
+    repository: "docker.io/library/kubernetes-devops-project-fastapi"
+    tag: "latest"
+  replicas: 3
+  port: 80
+  protocol: TCP
+
+postgres:
+  name:
+    pvc: exam-postgres
+    statefulset: exam-postgres
+    label: exam-postgres
+  image:
+    repository: "postgres"
+    tag: "12.0-alpine"
+  replicas: 1
+  port: 5432
+  namedb: "storedb"
+  storage: 10Gi
+
+pgadmin:
+  name:
+    deploy: exam-pgadmin
+    label: exam-pgadmin
+  image:
+    repository: "dpage/pgadmin4"
+    tag: "latest"
+  port: 80
+  replicas: 1

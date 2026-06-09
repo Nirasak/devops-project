@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: exam-fastapi
+  namespace: standard
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  labels:
+    app: exam-fastapi
+spec:
+  ingressClassName: traefik
+  tls:
+    - secretName: exam-fastapi
+      hosts:
+        - app2.nallain.cloud-ip.cc
+  rules:
+  - host: app2.nallain.cloud-ip.cc
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+             service:
+              name: exam-fastapi
+              port:
+                number: 80

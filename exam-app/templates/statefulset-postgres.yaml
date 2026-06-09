@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.postgres.name.statefulset }}
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.postgres.name.label }}
+  serviceName: {{ .Values.postgres.name.label }}
+  replicas: {{ .Values.postgres.replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.postgres.name.label }}
+    spec:
+      containers:
+        - name: {{ .Values.postgres.name.label }}
+          image: "{{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}"
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgres.name.label }}
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgres.name.label }}
+                  key: password
+            - name: POSTGRES_DB
+              value: {{ .Values.postgres.namedb }}
+          ports:
+            - containerPort: {{ .Values.postgres.port }}
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/postgresql
+              name: {{ .Values.postgres.name.label }}
+      volumes:
+        - name: {{ .Values.postgres.name.label }}
+          persistentVolumeClaim:
+            claimName: exam-postgres

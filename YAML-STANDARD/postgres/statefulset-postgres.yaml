@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: exam-postgres
+  namespace: standard
+spec:
+  selector:
+    matchLabels:
+      app: exam-postgres
+  serviceName: exam-postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: exam-postgres
+    spec:
+      containers:
+        - name: exam-postgres
+          image: postgres:12.0-alpine
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: exam-postgres
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: exam-postgres
+                  key: password
+            - name: POSTGRES_DB
+              value: "storedb"
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/postgresql
+              name: exam-postgres
+      volumes:
+        - name: exam-postgres
+          persistentVolumeClaim:
+            claimName: exam-postgres

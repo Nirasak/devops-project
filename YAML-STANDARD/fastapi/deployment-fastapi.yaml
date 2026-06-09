@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exam-fastapi
+  namespace: standard
+  labels:
+    app: exam-fastapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: exam-fastapi
+  template:
+    metadata:
+      labels:
+        app: exam-fastapi
+    spec:
+      containers:
+        - name: exam-fastapi
+          image: "docker.io/library/kubernetes-devops-project-fastapi:latest"
+          imagePullPolicy: Never
+          ports:
+            - name: exam-fastapi
+              containerPort: 80
+              protocol: TCP
